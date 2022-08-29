@@ -54,11 +54,9 @@
                             ASEAN Institute for Health Development, </h5>
                         <small>999 Salaya Phuttamonthon, Nakon Pathom, 73170 Thailand</small>
 
-                        <p class="my-3">
-                            mugh_th@mahidol.ac.th
-                        </p>
-                        <p><i class="fas fa-phone me-3"></i> +662-4419040-3 Ext.58</p>
-                        <p><i class="fas fa-print me-3"></i> 02-441-9044</p>
+                        <h6 class="my-3 p-0"><i class="fas fa-envelope"></i>&nbsp&nbsp&nbsp mugh_th@mahidol.ac.th</h6>
+                        <h6 class="my-3 p-0"><i class="fas fa-phone me-3"></i>+662-4419040-3 Ext.58</h6>
+                        <h6 class="my-3 p-0"><i class="fas fa-print me-3"></i>02-441-9044</h6>
                     </div>
                 </div>
             </div>

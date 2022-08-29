@@ -16,7 +16,7 @@
 
 <div class="row m-0 p-0">
     <div class="col-12 py-5 bg-primary text-center">
-        <h1 class="p-0 m-0 text-white ">SCOPE OF WORKS</h1>
+        <h1 class="p-0 m-0 text-white ">SCOPE OF WORK</h1>
     </div>
     <div class="col-12 my-2 ">
         <div class=" shadow-sm p-3 rounded">
