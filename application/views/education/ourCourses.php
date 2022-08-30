@@ -24,13 +24,13 @@
             <div class="col-12 col-sm-12 my-1">
                 <a href="<?= site_url('education/ourProgram') ?>" class="btn btn-secondary"><i class="fas fa-bookmark"></i> Global Health Program</a>
             </div>
-            <div class="col-12 col-sm-3">
+            <!-- <div class="col-12 col-sm-3">
                 <div class="position-sticky  mb-5">
                     <div class="text-black rounded">
                         <div class="bg-white  py-3 text-white ">
                             <div class="nav flex-column nav-pills me-3 text-dark" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 <a class="nav-link text-uppercase active" type="button" id="faculty1-tab" data-bs-toggle="pill" data-bs-target="#faculty1" type="button" role="tab" aria-controls="faculty1" aria-selected="true">
-                                    ปริญญาตรี
+                                Health Literacy
                                 </a>
                                 <a class="nav-link text-uppercase" type="button" id="faculty2-tab" data-bs-toggle="pill" data-bs-target="#faculty2" role="tab" aria-controls="faculty2" aria-selected="false">
                                     ปริญญาโท
@@ -42,8 +42,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-sm-9 tab-content" id="v-pills-tabContent">
+            </div> -->
+            <div class="col-12 col-sm-12 tab-content" id="v-pills-tabContent">
                 <div class=" tab-pane fade show active " id="faculty1" role="tabpanel" aria-labelledby="faculty1-tab">
                     <div class="col-12 col-md-12 col-sm-12  border bg-white p-2 shadow-sm rounded-lg text-sm-center">
                         <div class="row my-4 m-0 p-0">
@@ -98,25 +98,27 @@
 </div>
 
 <script>
+    var jsonData = ''
     $(document).ready(function() {
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "<?= base_url('issets/jsondata/officerprofile.json') ?>",
+            url: "<?= base_url('issets/jsondata/data.json') ?>",
             data: {},
         }).done(function(data) {
-            let tableData = []
+            jsonData = data
+            var tableData = []
             let n = 1
             for (var i = 0; i < data.length; i++) {
                 tableData.push([
                     `${n++}`,
-                    `<p class="fw-bold text-primary text-start">${data[i].name}</p>`,
-                    `<p class="fw-bold text-start">${data[i].email}</p>`,
-                    `<p class="fw-bold text-start">${data[i].position}</p>`,
+                    `<p class="fw-bold text-primary text-start">${data[i].Title}</p>`,
+                    `<p class="fw-bold text-start">${data[i].Curriculum}</p>`,
+                    `<p class="fw-bold text-start">${data[i].CourseType}</p>`,
                     `
                     <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-secondary">Download</button>
-                    <button type="button" class="btn btn-primary" onclick=openModal() value="" >More..</button>
+                    <a href="<?= base_url('isset/Course/Doc/') ?>${data[i].Download}" type="button" class="btn btn-secondary">Download</a>
+                    <button type="button" class="btn btn-primary" onclick=openModal(${data[i].Id}) value="${data[i].Id}" >More..</button>
                     </div>
 
               `,
@@ -133,7 +135,7 @@
             $('#g_table').DataTable({
                 data: tableData,
                 order: [
-                    ['0', 'desc']
+                    ['0', 'asc']
                 ],
                 columns: [{
                         title: "ลำดับ",
@@ -143,6 +145,8 @@
                     {
                         title: "รหัสและชื่อรายวิชา",
                         className: "align-middle",
+                        width: "40%"
+
                     },
                     {
                         title: "หลักสูตร",
@@ -188,7 +192,20 @@
         }
     })
 
-    function openModal() {
-        $("#edu_detail").modal('show')
+    function openModal(id) {
+        let resp = findId(jsonData, id)
+
+        hmtl += ``
+        // for (let i = 0; i < resp.length; i++) {
+        // }
+    }
+
+    function findId(data, id) {
+        var dataObj = data;
+        for (var i = 0; i < dataObj.length; i++) {
+            if (dataObj[i].Id == id) {
+                return (dataObj[i]);
+            }
+        }
     }
 </script>
