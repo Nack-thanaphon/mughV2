@@ -59,7 +59,7 @@
 
             <!-- Modal -->
             <div class="modal fade" id="edu_detail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable">
+                <!-- <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="staticBackdropLabel">รายละเอียดหลักสูตร</h5>
@@ -90,7 +90,7 @@
                             <button type="button" class="btn btn-primary">ดาวน์โหลด</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
         </div>
@@ -193,11 +193,45 @@
     })
 
     function openModal(id) {
+        let html = ''
         let resp = findId(jsonData, id)
 
-        hmtl += ``
-        // for (let i = 0; i < resp.length; i++) {
-        // }
+        html += `<div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">รายละเอียดหลักสูตร</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-primary fw-bold">รหัสและชื่อรายวิชา </p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, est?</p>
+                            <p class="text-primary fw-bold">ส่วนงานที่รับผิดชอบ </p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, est?</p>
+                            <p class="text-primary fw-bold">หลักสูตร </p>
+                            <p>${resp.Title}</p>
+                            <p class="text-primary fw-bold">ประเภทของรายวิชา </p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, est?</p>
+                            <p class="text-primary fw-bold">วันที่จัดทำหรือปรับปรุงรายละเอียดของรายวิชาครั้งล่าสุด </p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, est?</p>
+                            <p class="text-primary fw-bold">จุดมุ่งหมายของรายวิชา </p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, est?</p>
+                            <p class="text-primary fw-bold">วัตถุประสงค์ของรายวิชา </p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, est?</p>
+                            <p class="text-primary fw-bold">คำอธิบายรายวิชา </p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, est?</p>
+                            <p class=" fw-bold py-3">Website : <a href="">ไปที่เว็บไซต์หลัก</a> </p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                            <button type="button" class="btn btn-primary">ดาวน์โหลด</button>
+                        </div>
+                    </div>
+                </div>`
+
+        $("#edu_detail").html(html)
+        $("#edu_detail").modal('show')
+
     }
 
     function findId(data, id) {
